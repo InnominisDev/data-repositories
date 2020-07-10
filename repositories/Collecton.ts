@@ -1,0 +1,4 @@
+class Collection extends Array
+{
+
+}
