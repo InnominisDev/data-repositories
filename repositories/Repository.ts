@@ -1,4 +1,4 @@
-abstract class Repository
+export abstract class Repository
 {
     private data:Array<any>
 
