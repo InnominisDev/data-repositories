@@ -2,9 +2,8 @@
     .Test 
         input(placeholder="value" v-model="val")
         button(@click="setValue") Set
-        button(@click="getValue") Get
         .Test-list
-            item.Test-listItem(v-for="item in list.table" :itemData="item")
+            item.Test-listItem(v-for="item in list.content" :itemData="item")
 </template>
 
 <script lang="ts">
@@ -19,24 +18,17 @@
 
     let repository = new Repository('http://localhost:8077','test_db','my_table', Entity)
 
+
     export default Vue.extend({
 
         data () {
             return {
-                list: repository.read({}),
+                list: repository.get(),
                 val: "",
-                //repository: new Repository('my_table')
             }
         },
 
-        // mounted () {
-        //     this.repository = new Repository('my_table')
-        // },
-
         methods: {
-            getValue() {
-                this.list = repository.read({})
-            },
             setValue() {
                 repository.create({name: this.val})
             }

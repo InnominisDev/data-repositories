@@ -12,10 +12,6 @@
     export default Vue.extend({
         props:['itemData'],
 
-        created() {
-            console.log(this.itemData)
-        },
-
         methods: {
             remove () {
                 this.itemData.delete()
