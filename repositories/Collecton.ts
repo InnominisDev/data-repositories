@@ -1,4 +1,4 @@
-class Collection extends Array
+export class Collection extends Array
 {
 
 }
