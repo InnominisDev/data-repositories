@@ -2,34 +2,35 @@ import {Collection} from './Collecton'
 //import {Entity} from './Entity'
 
 
-interface MyTestInterface
+interface DataFromServer
 {
     name: string,
     age: number
 }
 
-class Test<Data>
+class AnyEntity
 {
-    public data:Data
-    constructor (data:Data)
+   
+    public olo: string = "test"
+    constructor (public data:DataFromServer)
     {
-        this.data = data
+       
     }
 }
 
 
 
-
-
-export class Model<Repository, Entity>
+interface Olo
 {
-    public repository: Repository
-    public Entity: new (data:MyTestInterface) => Entity
+    olo: string
+}
 
-    constructor (repository: Repository, Entity: new (data:MyTestInterface) => Entity)// вариант с обратной зависимостью
+export class Model<Repository, Entity extends Olo>
+{
+
+    constructor (public repository: Repository,  private Entity: new (data: DataFromServer) => Entity)// вариант с обратной зависимостью
     {
-        this.repository = repository
-        this.Entity = Entity
+
     }
 
     public where(): Collection<Repository, Entity>
@@ -40,16 +41,38 @@ export class Model<Repository, Entity>
 
     public get(): Entity
     {
-        return new this.Entity({name: 'one', age:99})
+        let fuck = new this.Entity({name: 123, age:'sdfsd'})
+        fuck.olo
+        return fuck
     }
 
 
 }
 
-const test = new Test<MyTestInterface>({name: 'sdf', age:12})
+const tipaRepository = new AnyEntity({name: 'sdf', age:12})
 
-const model = new Model<Test<MyTestInterface>, Test<MyTestInterface>>(test, Test)
+const model = new Model<AnyEntity, AnyEntity>(tipaRepository, AnyEntity)
 
-const entity = model.get()
+model.get().data.age
 
-entity.data.name
+//test proxy
+interface A
+{
+    name: string
+}
+
+class B implements A
+{
+    constructor (public name:string)
+    {}
+}
+
+let b = new B('sd')
+let p = new Proxy(b, {
+    get ()
+    {
+
+    },
+})
+
+p.name
