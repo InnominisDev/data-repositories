@@ -12,7 +12,7 @@ export class TestEntity
     public name: string
     public age: number
 
-    constructor (repository: any, {_id, name, age}:any)
+    constructor (repository: any, {_id, name, age}:Data)
     {
         this.repository = repository
         this.key = _id
