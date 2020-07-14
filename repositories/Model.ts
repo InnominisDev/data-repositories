@@ -2,26 +2,31 @@ import {Collection} from './Collecton'
 //import {Entity} from './Entity'
 
 
-interface ITest
+interface MyTestInterface
 {
-    hello:string
+    name: string,
+    age: number
 }
 
-class Test implements ITest
+class Test<Data>
 {
-    hello:string
-    constructor ()
+    public data:Data
+    constructor (data:Data)
     {
-        this.hello = 'sds'
+        this.data = data
     }
 }
+
+
+
+
 
 export class Model<Repository, Entity>
 {
     public repository: Repository
-    public Entity: new (data:any) => Entity
+    public Entity: new (data:MyTestInterface) => Entity
 
-    constructor (repository: Repository, Entity: new (data:any) => Entity)// надо прочитать интерфейс сущности
+    constructor (repository: Repository, Entity: new (data:MyTestInterface) => Entity)// вариант с обратной зависимостью
     {
         this.repository = repository
         this.Entity = Entity
@@ -35,8 +40,16 @@ export class Model<Repository, Entity>
 
     public get(): Entity
     {
-        return new this.Entity('sdf')
+        return new this.Entity({name: 'one', age:99})
     }
 
 
 }
+
+const test = new Test<MyTestInterface>({name: 'sdf', age:12})
+
+const model = new Model<Test<MyTestInterface>, Test<MyTestInterface>>(test, Test)
+
+const entity = model.get()
+
+entity.data.name
