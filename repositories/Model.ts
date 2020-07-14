@@ -19,9 +19,9 @@ class Test implements ITest
 export class Model<Repository, Entity>
 {
     public repository: Repository
-    public Entity: new () => Entity
+    public Entity: new (data:any) => Entity
 
-    constructor (repository: Repository, Entity: new () => Entity)
+    constructor (repository: Repository, Entity: new (data:any) => Entity)// надо прочитать интерфейс сущности
     {
         this.repository = repository
         this.Entity = Entity
@@ -35,7 +35,7 @@ export class Model<Repository, Entity>
 
     public get(): Entity
     {
-        return new this.Entity()
+        return new this.Entity('sdf')
     }
 
 
