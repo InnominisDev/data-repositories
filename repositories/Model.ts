@@ -1,34 +1,10 @@
 import {Collection} from './Collecton'
-//import {Entity} from './Entity'
 
 
-interface DataFromServer
-{
-    name: string,
-    age: number
-}
-
-class AnyEntity
-{
-   
-    public olo: string = "test"
-    constructor (public data:DataFromServer)
-    {
-       
-    }
-}
-
-
-
-interface Olo
-{
-    olo: string
-}
-
-export class Model<Repository, Entity extends Olo>
+export class Model<Repository, Entity>
 {
 
-    constructor (public repository: Repository,  private Entity: new (data: DataFromServer) => Entity)// вариант с обратной зависимостью
+    constructor (public repository: Repository,  private Entity: new (data: object) => Entity)// вариант с обратной зависимостью
     {
 
     }
@@ -41,38 +17,31 @@ export class Model<Repository, Entity extends Olo>
 
     public get(): Entity
     {
-        let fuck = new this.Entity({name: 123, age:'sdfsd'})
-        fuck.olo
-        return fuck
+        return new this.Entity({name: 123, age:'sdfsd'})
     }
 
-
 }
 
-const tipaRepository = new AnyEntity({name: 'sdf', age:12})
 
-const model = new Model<AnyEntity, AnyEntity>(tipaRepository, AnyEntity)
 
-model.get().data.age
-
-//test proxy
-interface A
+interface AbsEntity
 {
-    name: string
+    save: () => void
 }
 
-class B implements A
+class myEntity implements AbsEntity
 {
-    constructor (public name:string)
-    {}
-}
-
-let b = new B('sd')
-let p = new Proxy(b, {
-    get ()
+    public save()
     {
 
-    },
-})
+    }
+}
 
-p.name
+class T
+{
+    constructor (public a:AbsEntity) {}
+}
+
+let t = new T(new myEntity)
+
+t.a.save
