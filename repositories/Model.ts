@@ -100,8 +100,8 @@ user = {
     avatar.resolve() //images#523 from user.avatar
     posts = find('posts', 'autor') //self.id from user
     friends = find('friends', ['user1', 'user2']).resolve()
-    favorites = find('likes').resolve()
-    roles = find('user_roles').resolve()
+    favorites = find('likes', 'post').resolve()
+    roles = find('user_roles', 'role').resolve()
 
     skills.find('skills').resolve
     //<==> 
