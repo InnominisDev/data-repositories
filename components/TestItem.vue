@@ -2,7 +2,7 @@
     .Item 
         .Item-kit 
             button.Item-delete(@click="remove") Delete
-        .Item-data {{itemData.name}}
+        .Item-data {{item.name}}
 
 </template>
 
@@ -12,9 +12,15 @@
     export default Vue.extend({
         props:['itemData'],
 
+        data () {
+            return {
+                item: this.itemData
+            }
+        },
+
         methods: {
             remove () {
-                this.itemData.delete()
+                console.log(this.itemData)
             }
         }
         
