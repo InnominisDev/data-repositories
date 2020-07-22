@@ -1,10 +1,10 @@
-import { FakeDbRepository } from './FakeDbRepository'
+import { Repository } from './RepositoryInterface'
 
-export class Collection<Entity>
+export class Collection
 {
-    content: Array<string> = ['sdfsdg']
-    #repository: FakeDbRepository<Entity>
-    constructor (repository:FakeDbRepository<Entity>)
+    content: Array<string> = []
+    #repository: Repository
+    constructor (repository:Repository)
     {
         this.#repository = repository
     }
