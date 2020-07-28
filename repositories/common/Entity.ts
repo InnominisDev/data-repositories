@@ -19,9 +19,13 @@ export abstract class Entity
     {
         if (this.key)
         {
-
+            this.repository.update(this.key, this)
         } else {
-
+            this.repository.create(this)
+            // .then(({data}) => {
+            //     this.key = data._id
+            //     //this.setData(data)
+            // })
         }
     }
 
@@ -29,7 +33,8 @@ export abstract class Entity
     {
         if (this.key)
         {
-            console.log(`DB: deleted ${this.key}`)
+            this.repository.delete(this.key)
+            //console.log(`DB: deleted ${this.key}`)
         } else {
             console.log(`Has no created`)
         }

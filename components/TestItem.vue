@@ -20,7 +20,7 @@
 
         methods: {
             remove () {
-                console.log(this.itemData)
+                this.itemData.delete()
             }
         }
         

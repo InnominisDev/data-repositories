@@ -4,7 +4,7 @@
         button(@click="setValue") Set
         button(@click="query") TestQuery
         .Test-list
-            item.Test-listItem(v-for="item in list.list" :itemData="item")
+            item.Test-listItem(v-for="item in list.list" :itemData="item" :key="item.key")
 </template>
 
 <script lang="ts">
@@ -26,10 +26,15 @@
 
     let $user = new Repository<UserEntity>('http://localhost:8077','test_db','my_table', UserEntity)
 
+    // let newUser = $user.newEntity()
+    // newUser.name = "Vasylisa"
+    // newUser.save()
+    // console.log(newUser)
+
     //let user = $user.getEntity("Fb3krW9dXbwURlCY")
 
     let users = $user.getCollection()
-    
+    users.get()
 
 
     export default Vue.extend({
@@ -43,19 +48,17 @@
 
         methods: {
             setValue() {
-                // let user = repository.getEntity("Fb3krW9dXbwURlCY")
-                // this.list = user
-                //onsole.log(repository.getEntity("Fb3krW9dXbwURlCY"))
-                //this.list = [user, $user.getEntity("PfV4330VPsUhUfSk")]
-                //users.get()
-                users.get()
-                
+                let newUser = $user.newEntity()
+                newUser.name = this.val
+                newUser.save()
+                this.val = ""
+                console.log(users.list)
             },
             //"Fb3krW9dXbwURlCY"
             //"PfV4330VPsUhUfSk"
             query(){
-
-                $user.getEntity("PfV4330VPsUhUfSk").name = "Two"
+                
+                $user.getEntity("5fGro2OCFcArGnyl").name = "Two"
                 //user.name = 'One'
 
                 // axios.get('http://localhost:8077/test_db/my_table', {params: {body:{_id:{ $in: ["PfV4330VPsUhUfSk"] }} }}).then(({data}) => {
