@@ -30,7 +30,7 @@
             {
                 this.isEdit = !this.isEdit
             },
-            remove: function (i) {
+            remove: function (i:any) {
                 console.log(i, 'deleted')
             }
         },
