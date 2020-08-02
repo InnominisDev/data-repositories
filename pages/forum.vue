@@ -17,5 +17,12 @@
 </script>
 
 <style scoped lang='sass'>
-
+    .ForumPage
+        background: green
+        display: grid
+        grid-template-columns: 70% 30%
+    .ForumPage-publications
+        background: linear-gradient(to top right, brown, #811)
+        border-radius: 10px
+    
 </style>

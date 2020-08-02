@@ -1,7 +1,8 @@
 <template lang='pug'>
-    .User 
-        .User-avatar ::avatar:: 
-        .User-name(v-if="!isEdit") {{userName}}
+    .User
+        .User-info
+            .User-avatar ::avatar:: 
+            .User-name(v-if="!isEdit") {{userName}}
         input.User-editName(v-if="isEdit" v-model="userName")
         .User-tools
             .User-edit(@click="edit" :class="{active: isEdit}") Редактировать пользователя
@@ -45,9 +46,20 @@
 
 <style scoped lang='sass'>
     .User
+        padding: 20px 20px 20px 20px
+        &-avatar
+            margin: 5px
+            shape-outside: ellipse()
+            clip-path: ellipse()
+            width: 50px 
+            height: 50px
+            background: #612
+        &-name
+            border-radius: 10px
+            background: #912
         &-edit
             &.active
-                background: #ccc
+                background: #612
     .User-tools
-        color: grey
+        color: #411
 </style>

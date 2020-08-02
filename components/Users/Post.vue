@@ -39,11 +39,15 @@
 
 <style scoped lang='sass'>
     .Post
-        background: #cac
+        border-radius: 10px
+        background: #812
         &-edit
+            //background: #612
             &.active
-                background: #ccc
-                
+                 background: #512
+    .Post-text
+        background: #612   
+
     .Post-tools
-        color: grey
+        color: #222
 </style>
