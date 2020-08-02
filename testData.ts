@@ -43,5 +43,13 @@ export default {
                 },
             ],
         },
-    ]
+    ],
+    tags: [
+        {
+            title: 'hardstone'
+        },
+        {
+            title: 'omegalul'
+        }
+    ],
 } 

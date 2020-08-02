@@ -1,29 +1,27 @@
 <template lang="pug">
-    .Users
-        .Users-items
-            user.Users-item(v-for="(user, i) in users" :key="i" :user="user")
-        .Users-add
+    .Tags
+        .Tags-items
+            tag.Tags-item(v-for="(tag, i) in tags" :key="i" :tag="tag") {{tag.title}}    
+        .Tags-add
 </template>
 
 <script lang="ts">
     import Vue from 'vue'
-
-    import User from './User.vue'
 
     import data from '../../testData'
 
     export default Vue.extend({
         data() {
             return {
-                users: data.users
+                tags: data.tags
             }
         },
-        components:{
-            User
+        mounted(){
+            console.log()
         }
     })
 </script>
 
 <style scoped lang="sass">
-    .Users
+
 </style>
