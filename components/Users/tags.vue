@@ -2,6 +2,8 @@
     .Tags
         .Tags-items
             tag.Tags-item(v-for="(tag, i) in tags" :key="i" :tag="tag") {{tag.title}}
+                .Tags-button(@click="remove(tag)")
+                    delete.Tags-buttonDelete
         .Tags-add
 </template>
 
@@ -9,6 +11,8 @@
     import Vue from 'vue'
 
     import data from '../../testData'
+
+    import Delete from '../Svg/Delete.vue'
 
     export default Vue.extend({
         data() {
@@ -18,21 +22,22 @@
         },
         mounted(){
             console.log()
+        },
+        methods:{
+            remove: function (i: any) {
+                    console.log(i, 'deleted')
+            }
+        },
+        components:{
+            Delete,
         }
     })
 </script>
 
 <style scoped lang="sass">
-    .Tags
-        border-radius: 10px
-        margin: 20px 20px 20px 0px
-        padding: 15px 0px 0px 10px
-        background: linear-gradient(to top right, #171, #171)
     .Tags-item
-        padding: 5px 10px 5px 10px
-        margin: 0px 5px 0px 0px
-        border-radius: 1000000px
-        background: #060
-        color: #121
+        display: flex
+        border-radius: 1000000000px
+        background: #999
 
 </style>

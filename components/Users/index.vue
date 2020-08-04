@@ -25,7 +25,5 @@
 </script>
 
 <style scoped lang="sass">
-    .Users
-        margin: 20px 20px 20px 20px
-        background: blue
+    
 </style>

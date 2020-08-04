@@ -1,12 +1,14 @@
 <template lang='pug'>
     .User
-        .User-info
-            .User-avatar ::avatar:: 
+        .User-card
+            .User-avatar avatar
             .User-name(v-if="!isEdit") {{userName}}
-        input.User-editName(v-if="isEdit" v-model="userName")
-        .User-tools
-            .User-edit(@click="edit" :class="{active: isEdit}") Редактировать пользователя
-            .User-delete(@click="remove(user)") Удалить пользователя
+            input.User-editName(v-if="isEdit" v-model="userName")
+            .User-tools
+                .User-edit(@click="edit" :class="{active: isEdit}")
+                    edit.User-button
+                .User-delete(@click="remove(user)")
+                    delete.User-button
         .User-posts
             post.User-post(v-for="(post, i) in posts" :key="i" :post="post")
 </template>
@@ -15,6 +17,9 @@
     import Vue from 'vue'
 
     import Post from './Post.vue'
+
+    import Edit from '../Svg/Edit.vue'
+    import Delete from '../Svg/Delete.vue'
 
     export default Vue.extend({
         props:['user'],
@@ -39,27 +44,23 @@
             }
         },
         components:{
-            Post
+            Post,
+            Edit,
+            Delete
         }
     })
 </script>
 
 <style scoped lang='sass'>
-    .User
-        padding: 20px 20px 20px 20px
-        &-avatar
-            margin: 5px
-            shape-outside: ellipse()
-            clip-path: ellipse()
-            width: 50px 
-            height: 50px
-            background: #612
-        &-name
-            border-radius: 10px
-            background: #912
-        &-edit
-            &.active
-                background: #612
+    .User-card
+        display: flex
+        background: #999
     .User-tools
-        color: #411
+        display: flex
+        height: 12px
+    .User-avatar
+        width: 50px
+        height: 50px
+        background: #555
+        clip-path: circle()
 </style>

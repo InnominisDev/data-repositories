@@ -1,15 +1,19 @@
 <template lang='pug'>
     .Post
-        .Post-title post
         .Post-text(v-if="!isEdit") {{text}}
         input.Post-editText(v-if="isEdit" v-model="text")
         .Post-tools
-            .Post-edit(@click="edit" :class="{active: isEdit}") Редактировать текст
-            .Post-delete(@click="remove(post)") Удалить пост
+            .Post-edit(@click="edit" :class="{active: isEdit}")
+                edit.Post-button
+            .Post-delete(@click="remove(post)")
+                delete.Post-button
 </template>
 
 <script lang="ts">
     import Vue from 'vue'
+
+    import Edit from '../Svg/Edit.vue'
+    import Delete from '../Svg/Delete.vue'
 
     export default Vue.extend({
         props:['post'],
@@ -34,20 +38,23 @@
                 console.log(i, 'deleted')
             }
         },
+        components:{
+            Edit,
+            Delete,
+        },
     })
 </script>
 
 <style scoped lang='sass'>
     .Post
-        border-radius: 10px
-        background: #812
-        &-edit
-            //background: #612
-            &.active
-                 background: #512
-    .Post-text
-        background: #612   
-
-    .Post-tools
-        color: #222
+        background: #aaa
+        margin: 0px 10px 10px 0px
+        &-text
+            white-space: normal
+        display: flex
+        //justify-content: flex-end
+        &-tools
+            display: flex
+            justify-content: flex-end
+    .Post-button
 </style>
