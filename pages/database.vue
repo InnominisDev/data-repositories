@@ -15,6 +15,12 @@
     })
 </script>
 
-<style style="sass" scoped>
+<style lang="sass" scoped>
+
+    .App
+        +screen()
+        background: $cGround
+        &-databaseSelector
+          .selec  
 
 </style>
