@@ -14,12 +14,15 @@
     "@nuxt/typescript-runtime": "^0.4.10",
     "axios": "^0.19.2",
     "nuxt": "^2.13.0",
+    "nuxt-sass-resources-loader": "^2.0.5",
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.0.0",
     "sass": "^1.26.10",
-    "sass-loader": "^9.0.2"
+    "sass-loader": "^9.0.3"
   },
   "devDependencies": {
-    "@nuxt/typescript-build": "^1.0.3"
+    "@nuxt/typescript-build": "^1.0.3",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "node-sass": "^4.14.1"
   }
 }

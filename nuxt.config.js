@@ -51,7 +51,25 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+
+    '@nuxtjs/style-resources'
+
+      /*
+      ** Load styles
+      */
+      // [
+      //   'nuxt-sass-resources-loader', 
+      //   [
+      //       'assets/sass/main.sass',
+      //   ]
+      // ],
+
   ],
+
+  styleResources: {
+    sass: ['~assets/sass/*.sass']
+  },
+
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/

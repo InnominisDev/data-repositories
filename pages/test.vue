@@ -1,5 +1,6 @@
 <template lang="pug">
     .Test 
+        .Test-styles Test styles
         input(placeholder="value" v-model="val")
         button(@click="setValue") Set
         button(@click="query") TestQuery
@@ -73,6 +74,10 @@
     })
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
+
+   .Test
+        &-styles
+            +setColor(green)
 
 </style>
