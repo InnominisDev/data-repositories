@@ -2,7 +2,6 @@
     .Database
         .Database-existingRepositories
             .Database-repository(v-for="(repository, i) in repositories" 
-                                :class="{active: repository.isActive}"
                                 @click="(repository.open)()" :key="i") {{repository.name}}
         Creator.Database-new
 </template>
@@ -19,7 +18,7 @@
         computed: {
             repositories ()
             {
-                return app.repositories
+                return app.repositories.filter(repositoriy => repositoriy.isActive === false)
             }
         },
 
@@ -35,7 +34,6 @@
         +block()
         color: #FFF
         &-repository
-            &.active
-                font-weight: bold
+            
 
 </style>
